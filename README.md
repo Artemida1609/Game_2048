@@ -1,9 +1,7 @@
-Game 2048 - Prototype of Original Game 2048 with minimalistic design
-This project is easy to use and fun to play.
-You can play, restart and win the game!
-Tiles are painted in different colors you are used to.
+Game 2048.
+A web browser implementation of the game 2048. It features a minimalistic UI and responsive design, with the possibility for users to merge number tiles and reach the 2048 tile. It includes real-time scoring, win/loss detection, and dynamic tile rendering in response to user keyboard input. Built with the latest web technologies like SCSS and JavaScript, the project emphasizes modular code structure and user-friendly gameplay mechanics.
 
-Live DEMO: 
+Live DEMO:
 Expierience the live website: https://Artemida1609.github.io/Game_2048/
 
 Technologies used:
