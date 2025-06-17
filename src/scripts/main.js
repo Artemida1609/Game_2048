@@ -1,22 +1,22 @@
-'use strict';
+"use strict";
 
 // Uncomment the next lines to use your game instance in the browser
-const Game = require('../modules/Game.class');
+const Game = require("../modules/Game.class");
 const game = new Game();
 
 // Write your code here
 
-const button = document.querySelector('.button');
+const button = document.querySelector(".button");
 
 if (button) {
-  button.addEventListener('click', () => {
-    if (button.classList.contains('start')) {
+  button.addEventListener("click", () => {
+    if (button.classList.contains("start")) {
       game.start();
-      game.setStatus('playing');
+      game.setStatus("playing");
       startGameLoop();
-    } else if (button.classList.contains('restart')) {
+    } else if (button.classList.contains("restart")) {
       game.restart();
-      game.setStatus('idle');
+      game.setStatus("idle");
       startGameLoop();
     }
   });
@@ -30,28 +30,28 @@ function startGameLoop() {
   gameLoop = setInterval(() => {
     const newStatus = game.getStatus();
 
-    if (newStatus === 'win') {
+    if (newStatus === "win") {
       game.winWindow();
       clearInterval(gameLoop);
-    } else if (newStatus === 'lose') {
+    } else if (newStatus === "lose") {
       game.loseWindow();
       clearInterval(gameLoop);
     }
   }, 100);
 }
 
-document.addEventListener('keydown', (eve) => {
+document.addEventListener("keydown", (eve) => {
   if (!game.isPlaying()) {
     return;
   }
 
-  if (eve.key === 'ArrowLeft') {
+  if (eve.key === "ArrowLeft") {
     game.moveLeft();
-  } else if (eve.key === 'ArrowRight') {
+  } else if (eve.key === "ArrowRight") {
     game.moveRight();
-  } else if (eve.key === 'ArrowUp') {
+  } else if (eve.key === "ArrowUp") {
     game.moveUp();
-  } else if (eve.key === 'ArrowDown') {
+  } else if (eve.key === "ArrowDown") {
     game.moveDown();
   }
 });

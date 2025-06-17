@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /**
  * This class represents the game.
@@ -26,26 +26,26 @@ class Game {
   }
 
   moveRight() {
-    this.moveHorizontally('right');
+    this.moveHorizontally("right");
   }
 
   moveLeft() {
-    this.moveHorizontally('left');
+    this.moveHorizontally("left");
   }
 
   moveUp() {
-    this.moveVertically('up');
+    this.moveVertically("up");
   }
 
   moveDown() {
-    this.moveVertically('down');
+    this.moveVertically("down");
   }
 
   /**
    * @returns {number}
    */
   getScore(num) {
-    const score = document.querySelector('.game-score');
+    const score = document.querySelector(".game-score");
     const currentScore = parseInt(score.innerHTML) || 0;
 
     score.innerHTML = currentScore + num;
@@ -55,7 +55,7 @@ class Game {
    * @returns {number[][]}
    */
   getState() {
-    const tbody = document.querySelector('tbody');
+    const tbody = document.querySelector("tbody");
     const rows = tbody.rows;
     const table = [];
 
@@ -84,19 +84,19 @@ class Game {
    */
   getStatus() {
     if (this.hasWon()) {
-      return 'win';
+      return "win";
     }
 
     if (this.hasLose()) {
-      return 'lose';
+      return "lose";
     }
 
     if (this.isPlaying()) {
-      return 'playing';
+      return "playing";
     }
 
     if (this.isIdle()) {
-      return 'idle';
+      return "idle";
     }
   }
 
@@ -105,7 +105,7 @@ class Game {
   }
 
   hasWon() {
-    const tbody = document.querySelector('tbody');
+    const tbody = document.querySelector("tbody");
     const rows = tbody.rows;
 
     for (let i = 0; i < rows.length; i++) {
@@ -122,7 +122,7 @@ class Game {
   }
 
   hasLose() {
-    const tbody = document.querySelector('tbody');
+    const tbody = document.querySelector("tbody");
     const rows = tbody.rows;
     const table = [];
 
@@ -164,7 +164,7 @@ class Game {
   }
 
   isIdle() {
-    const tdElements = document.querySelectorAll('tbody td');
+    const tdElements = document.querySelectorAll("tbody td");
 
     for (let i = 0; i < tdElements.length; i++) {
       if (parseInt(tdElements[i].innerHTML) > 0) {
@@ -190,13 +190,13 @@ class Game {
    * Starts the game.
    */
   start() {
-    const startButton = document.querySelector('.button.start');
+    const startButton = document.querySelector(".button.start");
 
-    startButton.classList.add('restart');
-    startButton.classList.remove('start');
-    startButton.textContent = 'Restart';
+    startButton.classList.add("restart");
+    startButton.classList.remove("start");
+    startButton.textContent = "Restart";
 
-    const tdElements = document.querySelectorAll('.field-cell');
+    const tdElements = document.querySelectorAll(".field-cell");
     const tdArray = Array.from(tdElements);
     let firstElement, secondElement;
     let uniqueElements = new Set();
@@ -208,13 +208,13 @@ class Game {
     }
 
     if (uniqueElements.size === 2) {
-      firstElement.classList.add('field-cell--2');
-      firstElement.innerHTML = '2';
-      secondElement.classList.add('field-cell--2');
-      secondElement.innerHTML = '2';
+      firstElement.classList.add("field-cell--2");
+      firstElement.innerHTML = "2";
+      secondElement.classList.add("field-cell--2");
+      secondElement.innerHTML = "2";
     }
 
-    const startMessage = document.querySelector('.message-start');
+    const startMessage = document.querySelector(".message-start");
 
     if (startMessage) {
       startMessage.remove();
@@ -225,56 +225,56 @@ class Game {
    * Resets the game.
    */
   restart() {
-    const restartButton = document.querySelector('.button.restart');
+    const restartButton = document.querySelector(".button.restart");
 
-    restartButton.classList.remove('restart');
-    restartButton.classList.add('start');
+    restartButton.classList.remove("restart");
+    restartButton.classList.add("start");
 
-    restartButton.textContent = 'Start';
+    restartButton.textContent = "Start";
 
-    const tdElements = document.querySelectorAll('.field-cell');
+    const tdElements = document.querySelectorAll(".field-cell");
     const tdArray = Array.from(tdElements);
 
     tdArray.forEach((element) => {
-      element.className = 'field-cell';
-      element.innerHTML = '';
+      element.className = "field-cell";
+      element.innerHTML = "";
     });
 
-    const loseWindow = document.querySelector('.lose-window');
+    const loseWindow = document.querySelector(".lose-window");
 
     if (loseWindow) {
       loseWindow.remove();
     }
 
-    const winWindow = document.querySelector('.win-window');
+    const winWindow = document.querySelector(".win-window");
 
     if (winWindow) {
       winWindow.remove();
     }
 
-    const score = document.querySelector('.game-score');
+    const score = document.querySelector(".game-score");
 
     if (score) {
-      score.innerHTML = '0';
+      score.innerHTML = "0";
     }
 
-    this.setStatus('playing');
+    this.setStatus("playing");
 
-    const startMessage = document.createElement('p');
+    const startMessage = document.createElement("p");
 
-    startMessage.className = 'message message-start';
+    startMessage.className = "message message-start";
     startMessage.innerHTML = 'Press "Start" to begin game. Good luck!';
 
-    const messageContainer = document.querySelector('.message-container');
+    const messageContainer = document.querySelector(".message-container");
 
     messageContainer.appendChild(startMessage);
   }
 
   // Add your own methods here
   addNewCell() {
-    const tdElements = document.querySelectorAll('tbody td');
+    const tdElements = document.querySelectorAll("tbody td");
     const emptyCells = Array.from(tdElements).filter(
-      (cell) => cell.textContent.trim() === '',
+      (cell) => cell.textContent.trim() === "",
     );
 
     if (emptyCells.length > 0) {
@@ -282,11 +282,11 @@ class Game {
       const randomNumber = getRandomInt(2);
 
       if (randomNumber === 0) {
-        newElement.innerHTML = '2';
-        newElement.classList.add('field-cell--2');
+        newElement.innerHTML = "2";
+        newElement.classList.add("field-cell--2");
       } else if (randomNumber === 1) {
-        newElement.innerHTML = '4';
-        newElement.classList.add('field-cell--4');
+        newElement.innerHTML = "4";
+        newElement.classList.add("field-cell--4");
       }
     }
   }
@@ -295,7 +295,7 @@ class Game {
     const table = this.getState();
     const newTable = [];
 
-    const tbody = document.querySelector('tbody');
+    const tbody = document.querySelector("tbody");
     const rows = tbody.rows;
     let totalScore = 0;
     let tableChanged = false;
@@ -317,9 +317,9 @@ class Game {
       row = row.filter((val) => val > 0);
 
       while (row.length !== 4) {
-        if (direction === 'right') {
+        if (direction === "right") {
           row.unshift(0);
-        } else if (direction === 'left') {
+        } else if (direction === "left") {
           row.push(0);
         }
       }
@@ -333,8 +333,8 @@ class Game {
     for (let i = 0; i < newTable.length; i++) {
       for (let j = 0; j < newTable[i].length; j++) {
         rows[i].cells[j].innerHTML =
-          newTable[i][j] > 0 ? `${newTable[i][j]}` : '';
-        rows[i].cells[j].className = 'field-cell';
+          newTable[i][j] > 0 ? `${newTable[i][j]}` : "";
+        rows[i].cells[j].className = "field-cell";
 
         if (newTable[i][j] > 0) {
           rows[i].cells[j].classList.add(`field-cell--${newTable[i][j]}`);
@@ -352,7 +352,7 @@ class Game {
     const table = this.getState();
     const newTable = [];
 
-    const tbody = document.querySelector('tbody');
+    const tbody = document.querySelector("tbody");
     const rows = tbody.rows;
     let totalScore = 0;
     let tableChanged = false;
@@ -382,9 +382,9 @@ class Game {
       cell = cell.filter((val) => val > 0);
 
       while (cell.length !== 4) {
-        if (direction === 'down') {
+        if (direction === "down") {
           cell.unshift(0);
-        } else if (direction === 'up') {
+        } else if (direction === "up") {
           cell.push(0);
         }
       }
@@ -402,8 +402,8 @@ class Game {
     for (let i = 0; i < newTable.length; i++) {
       for (let j = 0; j < newTable[i].length; j++) {
         rows[i].cells[j].innerHTML =
-          newTable[i][j] > 0 ? `${newTable[i][j]}` : '';
-        rows[i].cells[j].className = 'field-cell';
+          newTable[i][j] > 0 ? `${newTable[i][j]}` : "";
+        rows[i].cells[j].className = "field-cell";
 
         if (newTable[i][j] > 0) {
           rows[i].cells[j].classList.add(`field-cell--${newTable[i][j]}`);
@@ -418,25 +418,25 @@ class Game {
   }
 
   loseWindow() {
-    const loseWindow = document.createElement('div');
+    const loseWindow = document.createElement("div");
 
-    loseWindow.className = 'lose-window';
+    loseWindow.className = "lose-window";
 
-    const title = document.createElement('h2');
+    const title = document.createElement("h2");
 
-    title.textContent = 'You lose! Try again.';
+    title.textContent = "You lose! Try again.";
     loseWindow.appendChild(title);
     document.body.appendChild(loseWindow);
   }
 
   winWindow() {
-    const winWindow = document.createElement('div');
+    const winWindow = document.createElement("div");
 
-    winWindow.className = 'win-window';
+    winWindow.className = "win-window";
 
-    const title = document.createElement('h2');
+    const title = document.createElement("h2");
 
-    title.textContent = 'You won! Congratulation!.';
+    title.textContent = "You won! Congratulation!.";
     winWindow.appendChild(title);
     document.body.appendChild(winWindow);
   }
